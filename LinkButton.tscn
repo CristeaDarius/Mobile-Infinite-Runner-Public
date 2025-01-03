@@ -1,0 +1,51 @@
+[gd_scene load_steps=13 format=3 uid="uid://w63acde1cku8"]
+
+[ext_resource type="Script" path="res://link_button.gd" id="1_yttsd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2c7jb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qt5k5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mb7fb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5tdqk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4j2qu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g7yub"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dfxg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t6xlg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2yi87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cm54"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxx44"]
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_colors/font_hover_pressed_color = Color(0.0666667, 0.666667, 1, 1)
+theme_override_colors/font_hover_color = Color(0.0666667, 0.666667, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.0666667, 0.666667, 1, 1)
+theme_override_colors/font_focus_color = Color(0.0666667, 0.666667, 1, 1)
+theme_override_colors/font_color = Color(0.0666667, 0.666667, 1, 1)
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2c7jb")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_qt5k5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mb7fb")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5tdqk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_4j2qu")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_g7yub")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2dfxg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_t6xlg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2yi87")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_8cm54")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rxx44")
+text = "Link"
+flat = true
+script = ExtResource("1_yttsd")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

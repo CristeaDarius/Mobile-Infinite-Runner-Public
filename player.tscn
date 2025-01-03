@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://btaw3fxy0qf2f"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_3rn8o"]
+[ext_resource type="Texture2D" uid="uid://crm7bus61fm4p" path="res://assets/Kenney/Tiles/tile_0070.png" id="2_1701x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3d7f8"]
+size = Vector2(10, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32hii"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+z_as_relative = false
+y_sort_enabled = true
+collision_layer = 2
+script = ExtResource("1_3rn8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("2_1701x")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_3d7f8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_32hii")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(4, 4)

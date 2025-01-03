@@ -1,0 +1,939 @@
+[gd_scene load_steps=31 format=4 uid="uid://cim26gqip6pmp"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_0yww7"]
+[ext_resource type="PackedScene" uid="uid://btaw3fxy0qf2f" path="res://player.tscn" id="1_5akj3"]
+[ext_resource type="Script" path="res://stuff_spawner.gd" id="2_gngq4"]
+[ext_resource type="TileSet" uid="uid://d0q5yr4mx1gx0" path="res://assets/Kenney/Tilemap/new_tile_set.tres" id="3_vbawf"]
+[ext_resource type="Texture2D" uid="uid://dowu5iri40s00" path="res://assets/start.png" id="4_5j60h"]
+[ext_resource type="Texture2D" uid="uid://byoirx3oxkq1j" path="res://assets/Kenney/Tiles/tile_0069.png" id="4_dhqdj"]
+[ext_resource type="Texture2D" uid="uid://rtx03fa42oy5" path="res://assets/retry.png" id="4_tyewl"]
+[ext_resource type="Texture2D" uid="uid://bog73b8ibmuxm" path="res://assets/laurel.png" id="5_q8bie"]
+[ext_resource type="Script" path="res://fading.gd" id="5_xbp8w"]
+[ext_resource type="Texture2D" uid="uid://y6yc0c71lrax" path="res://assets/clock.png" id="6_x86dy"]
+[ext_resource type="StyleBox" uid="uid://b4p2yf0t0lidc" path="res://new_style_box_flat.stylebox" id="8_e5ghm"]
+[ext_resource type="Texture2D" uid="uid://bcv5eu4vkr2e6" path="res://assets/music.png" id="8_n4nvb"]
+[ext_resource type="Texture2D" uid="uid://djhr4e2db40do" path="res://assets/sounds.png" id="9_n1tnf"]
+[ext_resource type="Texture2D" uid="uid://cedk0uhrcvapn" path="res://assets/info.png" id="11_fk7ta"]
+[ext_resource type="Texture2D" uid="uid://dr6xwyosp7ftk" path="res://assets/phone_tilt.png" id="11_foqxn"]
+[ext_resource type="Texture2D" uid="uid://bi1u73cvyn1wb" path="res://assets/buttons.png" id="11_h2hmv"]
+[ext_resource type="PackedScene" uid="uid://w63acde1cku8" path="res://LinkButton.tscn" id="18_ms6oy"]
+[ext_resource type="Script" path="res://path_maker.gd" id="19_78e0b"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ld02b"]
+b = Vector2(176, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xuxv5"]
+b = Vector2(0, 320)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uq6g6"]
+bg_color = Color(0.333333, 0.223529, 0.133333, 0.901961)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_13vki"]
+load_path = "res://.godot/imported/menu.png-507092a63be01007fcca0624aab4189b.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuiih"]
+atlas = ExtResource("11_foqxn")
+region = Rect2(0, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ee57"]
+atlas = ExtResource("11_foqxn")
+region = Rect2(48, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orayr"]
+atlas = ExtResource("11_foqxn")
+region = Rect2(24, 0, 24, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptb6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuiih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ee57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuiih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuiih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orayr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuiih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orayr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orayr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuiih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ee57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ee57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuiih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuiih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orayr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvp87"]
+atlas = ExtResource("11_h2hmv")
+region = Rect2(0, 0, 28, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ims2"]
+atlas = ExtResource("11_h2hmv")
+region = Rect2(0, 26, 28, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shp5n"]
+atlas = ExtResource("11_h2hmv")
+region = Rect2(0, 13, 28, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_45aj3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvp87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ims2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvp87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shp5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shp5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shp5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ims2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvp87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ims2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ims2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shp5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvp87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shp5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvp87")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="World" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_0yww7")
+
+[node name="StuffSpawner" type="Node" parent="."]
+script = ExtResource("2_gngq4")
+
+[node name="PathMaker" type="Area2D" parent="."]
+position = Vector2(0, 424)
+collision_layer = 16
+collision_mask = 12
+script = ExtResource("19_78e0b")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathMaker"]
+polygon = PackedVector2Array(-16, -80, 16, -80, 16, 600, -16, 600)
+disabled = true
+
+[node name="Timer" type="Timer" parent="PathMaker"]
+wait_time = 0.1
+
+[node name="ScreenBorders" type="StaticBody2D" parent="."]
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenBorders"]
+shape = SubResource("SegmentShape2D_ld02b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ScreenBorders"]
+position = Vector2(0, 320)
+shape = SubResource("SegmentShape2D_ld02b")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ScreenBorders"]
+shape = SubResource("SegmentShape2D_xuxv5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ScreenBorders"]
+position = Vector2(176, 0)
+shape = SubResource("SegmentShape2D_xuxv5")
+
+[node name="Part1" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -304)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Part1"]
+z_index = -1
+texture_filter = 3
+tile_map_data = PackedByteArray("AAAAAAAAAAADAAMAAAABAAAAAAADAAMAAAACAAAAAAACAAIAAAADAAAAAAADAAMAAAAEAAAAAAADAAIAAAAFAAAAAAACAAIAAAAGAAAAAAACAAIAAAAHAAAAAAACAAAAAAAIAAAAAAADAAIAAAAJAAAAAAACAAAAAAAJAAEAAAADAAIAAAAIAAEAAAADAAAAAAAHAAEAAAACAAMAAAAGAAEAAAACAAMAAAAFAAEAAAACAAAAAAAEAAEAAAADAAAAAAADAAEAAAACAAIAAAACAAEAAAADAAMAAAABAAEAAAADAAAAAAAAAAEAAAADAAMAAAAAAAIAAAADAAMAAAAAAAMAAAADAAAAAAABAAMAAAACAAIAAAACAAMAAAADAAMAAAADAAMAAAACAAIAAAAEAAMAAAACAAMAAAAEAAIAAAACAAAAAAAFAAIAAAACAAMAAAAGAAIAAAACAAIAAAAHAAIAAAACAAIAAAAIAAIAAAADAAAAAAAJAAIAAAADAAMAAAAJAAMAAAACAAAAAAAIAAMAAAACAAAAAAAHAAMAAAADAAIAAAAGAAMAAAACAAMAAAAFAAMAAAADAAMAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAABAAIAAAADAAMAAAABAAQAAAADAAMAAAAAAAQAAAADAAMAAAACAAQAAAADAAMAAAADAAQAAAACAAMAAAAEAAQAAAADAAMAAAAFAAQAAAADAAAAAAAGAAQAAAACAAIAAAAHAAQAAAADAAIAAAAIAAQAAAADAAIAAAAJAAQAAAADAAIAAAAKAAUAAAACAAIAAAAGAAUAAAACAAIAAAAGAAYAAAADAAIAAAAHAAYAAAACAAIAAAAHAAUAAAACAAIAAAAIAAUAAAADAAMAAAAJAAUAAAACAAIAAAADAAYAAAADAAIAAAADAAUAAAADAAIAAAAFAAUAAAADAAMAAAAFAAYAAAACAAAAAAAFAAcAAAACAAAAAAAEAAYAAAACAAAAAAAEAAUAAAACAAAAAAACAAYAAAACAAMAAAACAAUAAAACAAIAAAABAAUAAAACAAAAAAABAAYAAAACAAIAAAAAAAYAAAACAAAAAAAAAAUAAAADAAIAAAAAAAcAAAADAAIAAAAAAAgAAAADAAIAAAAAAAkAAAADAAMAAAAAAAoAAAADAAAAAAAAAAsAAAADAAMAAAAAAAwAAAADAAMAAAAAAA0AAAADAAAAAAABAAcAAAACAAAAAAABAAgAAAADAAAAAAABAAkAAAADAAMAAAABAAoAAAADAAIAAAABAAsAAAACAAMAAAABAAwAAAADAAAAAAABAA0AAAADAAAAAAACAAcAAAACAAIAAAACAAgAAAACAAIAAAACAAkAAAADAAIAAAACAAoAAAADAAAAAAACAAsAAAADAAIAAAACAAwAAAADAAAAAAACAA0AAAACAAMAAAADAAcAAAADAAMAAAADAAgAAAACAAMAAAADAAkAAAADAAMAAAADAAoAAAADAAIAAAADAAsAAAACAAIAAAADAAwAAAACAAAAAAADAA0AAAACAAAAAAAEAAcAAAADAAIAAAAEAAgAAAADAAAAAAAEAAkAAAADAAAAAAAEAAoAAAACAAIAAAAEAAsAAAADAAAAAAAEAAwAAAACAAAAAAAEAA0AAAADAAIAAAAFAAgAAAADAAAAAAAFAAkAAAACAAAAAAAFAAoAAAACAAIAAAAFAAsAAAACAAAAAAAFAAwAAAACAAMAAAAFAA0AAAADAAIAAAAGAAcAAAADAAAAAAAGAAgAAAADAAMAAAAGAAkAAAADAAMAAAAGAAoAAAADAAMAAAAGAAsAAAACAAAAAAAGAAwAAAACAAIAAAAGAA0AAAACAAAAAAAHAAcAAAACAAIAAAAHAAgAAAADAAAAAAAHAAkAAAADAAMAAAAHAAoAAAACAAMAAAAHAAsAAAADAAIAAAAHAAwAAAACAAAAAAAHAA0AAAADAAMAAAAAAA4AAAACAAIAAAAAAA8AAAADAAAAAAAAABAAAAADAAAAAAAAABEAAAADAAIAAAAAABIAAAACAAIAAAAAABMAAAACAAMAAAABAA4AAAADAAMAAAABAA8AAAACAAMAAAABABAAAAACAAMAAAABABEAAAACAAIAAAABABIAAAACAAMAAAABABMAAAACAAMAAAACAA4AAAACAAAAAAACAA8AAAACAAIAAAACABAAAAADAAAAAAACABEAAAACAAMAAAACABIAAAADAAMAAAACABMAAAADAAMAAAADAA4AAAACAAMAAAADAA8AAAACAAMAAAADABAAAAADAAIAAAADABEAAAACAAMAAAADABIAAAADAAIAAAADABMAAAACAAIAAAAEAA4AAAADAAMAAAAEAA8AAAADAAAAAAAEABAAAAACAAMAAAAEABEAAAADAAAAAAAEABIAAAADAAMAAAAEABMAAAADAAAAAAAFAA4AAAADAAIAAAAFAA8AAAADAAAAAAAFABAAAAACAAMAAAAFABEAAAACAAAAAAAFABIAAAACAAMAAAAFABMAAAACAAAAAAAGAA4AAAACAAAAAAAGAA8AAAACAAMAAAAGABAAAAADAAAAAAAGABEAAAACAAMAAAAGABIAAAADAAMAAAAGABMAAAACAAIAAAAHAA4AAAADAAMAAAAHAA8AAAADAAIAAAAKAAAAAAADAAMAAAAKAAEAAAADAAIAAAAKAAIAAAADAAAAAAAKAAMAAAADAAAAAAAKAAQAAAACAAAAAAAIAAYAAAACAAIAAAAIAAcAAAADAAIAAAAIAAgAAAACAAMAAAAIAAkAAAACAAMAAAAIAAoAAAACAAAAAAAIAAsAAAADAAAAAAAIAAwAAAADAAAAAAAIAA0AAAACAAAAAAAIAA4AAAADAAAAAAAIAA8AAAACAAIAAAAJAAYAAAACAAMAAAAJAAcAAAADAAIAAAAJAAgAAAADAAIAAAAJAAkAAAADAAIAAAAJAAoAAAADAAIAAAAJAAsAAAADAAIAAAAJAAwAAAACAAMAAAAJAA0AAAADAAAAAAAJAA4AAAACAAIAAAAJAA8AAAADAAMAAAAKAAYAAAADAAAAAAAKAAcAAAACAAIAAAAKAAgAAAADAAMAAAAKAAkAAAACAAMAAAAKAAoAAAADAAAAAAAKAAsAAAACAAIAAAAKAAwAAAACAAMAAAAKAA0AAAADAAAAAAAKAA4AAAACAAAAAAAKAA8AAAADAAIAAAAHABAAAAADAAAAAAAHABEAAAADAAIAAAAHABIAAAACAAIAAAAHABMAAAACAAAAAAAIABAAAAADAAIAAAAIABEAAAACAAAAAAAJABAAAAACAAAAAAAJABEAAAACAAMAAAAKABAAAAACAAIAAAAKABEAAAADAAIAAAAIABIAAAADAAIAAAAIABMAAAACAAIAAAAJABIAAAADAAMAAAAJABMAAAADAAAAAAAKABIAAAACAAIAAAAKABMAAAADAAAAAAAAABQAAAACAAIAAAAAABUAAAACAAIAAAAAABYAAAACAAAAAAAAABcAAAADAAIAAAAAABgAAAADAAMAAAAAABkAAAADAAMAAAAAABoAAAACAAAAAAAAABsAAAADAAAAAAAAABwAAAADAAMAAAAAAB0AAAADAAMAAAABABQAAAADAAMAAAABABUAAAADAAMAAAABABYAAAADAAMAAAABABcAAAADAAIAAAABABgAAAADAAMAAAABABkAAAADAAAAAAABABoAAAACAAMAAAABABsAAAACAAAAAAABABwAAAADAAAAAAABAB0AAAACAAAAAAACABQAAAACAAAAAAACABUAAAACAAAAAAACABYAAAADAAIAAAACABcAAAACAAAAAAACABgAAAADAAIAAAACABkAAAACAAMAAAACABoAAAACAAMAAAACABsAAAADAAAAAAACABwAAAADAAIAAAACAB0AAAADAAAAAAADABQAAAADAAMAAAADABUAAAACAAAAAAADABYAAAACAAMAAAADABcAAAADAAMAAAADABgAAAADAAAAAAADABkAAAADAAIAAAADABoAAAACAAIAAAADABsAAAADAAIAAAADABwAAAADAAAAAAADAB0AAAACAAIAAAAEABQAAAACAAAAAAAEABUAAAADAAAAAAAEABYAAAACAAMAAAAEABcAAAADAAIAAAAEABgAAAACAAIAAAAEABkAAAADAAIAAAAEABoAAAACAAMAAAAEABsAAAADAAAAAAAEABwAAAADAAAAAAAEAB0AAAADAAAAAAAFABQAAAADAAAAAAAFABUAAAADAAIAAAAFABYAAAADAAIAAAAFABcAAAACAAAAAAAFABgAAAACAAIAAAAFABkAAAACAAAAAAAFABoAAAADAAMAAAAFABsAAAACAAMAAAAFABwAAAACAAAAAAAFAB0AAAACAAAAAAAGABQAAAACAAAAAAAGABUAAAADAAAAAAAGABYAAAACAAMAAAAGABcAAAACAAMAAAAGABgAAAACAAAAAAAGABkAAAACAAAAAAAGABoAAAACAAAAAAAGABsAAAADAAMAAAAGABwAAAADAAIAAAAGAB0AAAACAAIAAAAHABQAAAADAAIAAAAHABUAAAACAAIAAAAHABYAAAADAAAAAAAHABcAAAADAAAAAAAHABgAAAADAAIAAAAHABkAAAADAAIAAAAHABoAAAADAAAAAAAHABsAAAACAAIAAAAHABwAAAACAAIAAAAHAB0AAAACAAAAAAAIABQAAAADAAMAAAAIABUAAAACAAAAAAAIABYAAAADAAAAAAAIABcAAAADAAIAAAAIABgAAAACAAAAAAAIABkAAAACAAMAAAAIABoAAAACAAMAAAAIABsAAAACAAMAAAAIABwAAAADAAAAAAAIAB0AAAACAAIAAAAJABQAAAACAAAAAAAJABUAAAADAAAAAAAJABYAAAACAAMAAAAJABcAAAADAAIAAAAJABgAAAADAAMAAAAJABkAAAADAAAAAAAJABoAAAACAAAAAAAJABsAAAADAAIAAAAJABwAAAADAAIAAAAJAB0AAAADAAAAAAAKABQAAAACAAAAAAAKABUAAAADAAIAAAAKABYAAAADAAAAAAAKABcAAAADAAMAAAAKABgAAAACAAIAAAAKABkAAAACAAAAAAAKABoAAAADAAIAAAAKABsAAAADAAAAAAAKABwAAAACAAAAAAAKAB0AAAADAAMAAAA=")
+tile_set = ExtResource("3_vbawf")
+metadata/_edit_lock_ = true
+
+[node name="TL" type="Marker2D" parent="Part1"]
+metadata/_edit_lock_ = true
+
+[node name="TR" type="Marker2D" parent="Part1"]
+position = Vector2(176, 0)
+metadata/_edit_lock_ = true
+
+[node name="BR" type="Marker2D" parent="Part1"]
+position = Vector2(176, 480)
+metadata/_edit_lock_ = true
+
+[node name="BL" type="Marker2D" parent="Part1"]
+position = Vector2(0, 480)
+metadata/_edit_lock_ = true
+
+[node name="Objects" type="Node2D" parent="Part1"]
+z_index = 1
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Part2" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 176)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Part2"]
+z_index = -1
+texture_filter = 3
+tile_map_data = PackedByteArray("AAAAAAAAAAADAAMAAAABAAAAAAADAAMAAAACAAAAAAACAAIAAAADAAAAAAADAAMAAAAEAAAAAAADAAIAAAAFAAAAAAACAAIAAAAGAAAAAAACAAIAAAAHAAAAAAACAAAAAAAIAAAAAAADAAIAAAAJAAAAAAACAAAAAAAJAAEAAAADAAIAAAAIAAEAAAADAAAAAAAHAAEAAAACAAMAAAAGAAEAAAACAAMAAAAFAAEAAAACAAAAAAAEAAEAAAADAAAAAAADAAEAAAACAAIAAAACAAEAAAADAAMAAAABAAEAAAADAAAAAAAAAAEAAAADAAMAAAAAAAIAAAADAAMAAAAAAAMAAAADAAAAAAABAAMAAAACAAIAAAACAAMAAAADAAMAAAADAAMAAAACAAIAAAAEAAMAAAACAAMAAAAEAAIAAAACAAAAAAAFAAIAAAACAAMAAAAGAAIAAAACAAIAAAAHAAIAAAACAAIAAAAIAAIAAAADAAAAAAAJAAIAAAADAAMAAAAJAAMAAAACAAAAAAAIAAMAAAACAAAAAAAHAAMAAAADAAIAAAAGAAMAAAACAAMAAAAFAAMAAAADAAMAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAABAAIAAAADAAMAAAABAAQAAAADAAMAAAAAAAQAAAADAAMAAAACAAQAAAADAAMAAAADAAQAAAACAAMAAAAEAAQAAAADAAMAAAAFAAQAAAADAAAAAAAGAAQAAAACAAIAAAAHAAQAAAADAAIAAAAIAAQAAAADAAIAAAAJAAQAAAADAAIAAAAKAAUAAAACAAIAAAAGAAUAAAACAAIAAAAGAAYAAAADAAIAAAAHAAYAAAACAAIAAAAHAAUAAAACAAIAAAAIAAUAAAADAAMAAAAJAAUAAAACAAIAAAADAAYAAAADAAIAAAADAAUAAAADAAIAAAAFAAUAAAADAAMAAAAFAAYAAAACAAAAAAAFAAcAAAACAAAAAAAEAAYAAAACAAAAAAAEAAUAAAACAAAAAAACAAYAAAACAAMAAAACAAUAAAACAAIAAAABAAUAAAACAAAAAAABAAYAAAACAAIAAAAAAAYAAAACAAAAAAAAAAUAAAADAAIAAAAAAAcAAAADAAIAAAAAAAgAAAADAAIAAAAAAAkAAAADAAMAAAAAAAoAAAADAAAAAAAAAAsAAAADAAMAAAAAAAwAAAADAAMAAAAAAA0AAAADAAAAAAABAAcAAAACAAAAAAABAAgAAAADAAAAAAABAAkAAAADAAMAAAABAAoAAAADAAIAAAABAAsAAAACAAMAAAABAAwAAAADAAAAAAABAA0AAAADAAAAAAACAAcAAAACAAIAAAACAAgAAAACAAIAAAACAAkAAAADAAIAAAACAAoAAAADAAAAAAACAAsAAAADAAIAAAACAAwAAAADAAAAAAACAA0AAAACAAMAAAADAAcAAAADAAMAAAADAAgAAAACAAMAAAADAAkAAAADAAMAAAADAAoAAAADAAIAAAADAAsAAAACAAIAAAADAAwAAAACAAAAAAADAA0AAAACAAAAAAAEAAcAAAADAAIAAAAEAAgAAAADAAAAAAAEAAkAAAADAAAAAAAEAAoAAAACAAIAAAAEAAsAAAADAAAAAAAEAAwAAAACAAAAAAAEAA0AAAADAAIAAAAFAAgAAAADAAAAAAAFAAkAAAACAAAAAAAFAAoAAAACAAIAAAAFAAsAAAACAAAAAAAFAAwAAAACAAMAAAAFAA0AAAADAAIAAAAGAAcAAAADAAAAAAAGAAgAAAADAAMAAAAGAAkAAAADAAMAAAAGAAoAAAADAAMAAAAGAAsAAAACAAAAAAAGAAwAAAACAAIAAAAGAA0AAAACAAAAAAAHAAcAAAACAAIAAAAHAAgAAAADAAAAAAAHAAkAAAADAAMAAAAHAAoAAAACAAMAAAAHAAsAAAADAAIAAAAHAAwAAAACAAAAAAAHAA0AAAADAAMAAAAAAA4AAAACAAIAAAAAAA8AAAADAAAAAAAAABAAAAADAAAAAAAAABEAAAADAAIAAAAAABIAAAACAAIAAAAAABMAAAACAAMAAAABAA4AAAADAAMAAAABAA8AAAACAAMAAAABABAAAAACAAMAAAABABEAAAACAAIAAAABABIAAAACAAMAAAABABMAAAACAAMAAAACAA4AAAACAAAAAAACAA8AAAACAAIAAAACABAAAAADAAAAAAACABEAAAACAAMAAAACABIAAAADAAMAAAACABMAAAADAAMAAAADAA4AAAACAAMAAAADAA8AAAACAAMAAAADABAAAAADAAIAAAADABEAAAACAAMAAAADABIAAAADAAIAAAADABMAAAACAAIAAAAEAA4AAAADAAMAAAAEAA8AAAADAAAAAAAEABAAAAACAAMAAAAEABEAAAADAAAAAAAEABIAAAADAAMAAAAEABMAAAADAAAAAAAFAA4AAAADAAIAAAAFAA8AAAADAAAAAAAFABAAAAACAAMAAAAFABEAAAACAAAAAAAFABIAAAACAAMAAAAFABMAAAACAAAAAAAGAA4AAAACAAAAAAAGAA8AAAACAAMAAAAGABAAAAADAAAAAAAGABEAAAACAAMAAAAGABIAAAADAAMAAAAGABMAAAACAAIAAAAHAA4AAAADAAMAAAAHAA8AAAADAAIAAAAKAAAAAAADAAMAAAAKAAEAAAADAAIAAAAKAAIAAAADAAAAAAAKAAMAAAADAAAAAAAKAAQAAAACAAAAAAAIAAYAAAACAAIAAAAIAAcAAAADAAIAAAAIAAgAAAACAAMAAAAIAAkAAAACAAMAAAAIAAoAAAACAAAAAAAIAAsAAAADAAAAAAAIAAwAAAADAAAAAAAIAA0AAAACAAAAAAAIAA4AAAADAAAAAAAIAA8AAAACAAIAAAAJAAYAAAACAAMAAAAJAAcAAAADAAIAAAAJAAgAAAADAAIAAAAJAAkAAAADAAIAAAAJAAoAAAADAAIAAAAJAAsAAAADAAIAAAAJAAwAAAACAAMAAAAJAA0AAAADAAAAAAAJAA4AAAACAAIAAAAJAA8AAAADAAMAAAAKAAYAAAADAAAAAAAKAAcAAAACAAIAAAAKAAgAAAADAAMAAAAKAAkAAAACAAMAAAAKAAoAAAADAAAAAAAKAAsAAAACAAIAAAAKAAwAAAACAAMAAAAKAA0AAAADAAAAAAAKAA4AAAACAAAAAAAKAA8AAAADAAIAAAAHABAAAAADAAAAAAAHABEAAAADAAIAAAAHABIAAAACAAIAAAAHABMAAAACAAAAAAAIABAAAAADAAIAAAAIABEAAAACAAAAAAAJABAAAAACAAAAAAAJABEAAAACAAMAAAAKABAAAAACAAIAAAAKABEAAAADAAIAAAAIABIAAAADAAIAAAAIABMAAAACAAIAAAAJABIAAAADAAMAAAAJABMAAAADAAAAAAAKABIAAAACAAIAAAAKABMAAAADAAAAAAAAABQAAAACAAIAAAAAABUAAAADAAIAAAAAABYAAAACAAMAAAAAABcAAAACAAMAAAAAABgAAAACAAMAAAAAABkAAAADAAMAAAAAABoAAAADAAIAAAAAABsAAAACAAAAAAAAABwAAAACAAIAAAAAAB0AAAADAAAAAAABABQAAAADAAMAAAABABUAAAADAAIAAAABABYAAAADAAIAAAABABcAAAACAAMAAAABABgAAAADAAAAAAABABkAAAACAAMAAAABABoAAAACAAAAAAABABsAAAACAAMAAAABABwAAAACAAIAAAABAB0AAAACAAIAAAACABQAAAADAAAAAAACABUAAAADAAIAAAACABYAAAADAAAAAAACABcAAAADAAAAAAACABgAAAADAAAAAAACABkAAAACAAIAAAACABoAAAADAAAAAAACABsAAAACAAAAAAACABwAAAADAAMAAAACAB0AAAADAAAAAAADABQAAAACAAMAAAADABUAAAADAAIAAAADABYAAAACAAMAAAADABcAAAACAAAAAAADABgAAAADAAMAAAADABkAAAADAAIAAAADABoAAAADAAMAAAADABsAAAADAAAAAAADABwAAAACAAAAAAADAB0AAAACAAMAAAAEABQAAAACAAMAAAAEABUAAAACAAAAAAAEABYAAAADAAIAAAAEABcAAAACAAIAAAAEABgAAAACAAAAAAAEABkAAAACAAAAAAAEABoAAAACAAAAAAAEABsAAAADAAIAAAAEABwAAAADAAMAAAAEAB0AAAACAAIAAAAFABQAAAADAAIAAAAFABUAAAACAAIAAAAFABYAAAADAAMAAAAFABcAAAACAAIAAAAFABgAAAACAAMAAAAFABkAAAADAAIAAAAFABoAAAADAAIAAAAFABsAAAACAAAAAAAFABwAAAACAAIAAAAFAB0AAAADAAMAAAAGABQAAAADAAMAAAAGABUAAAADAAIAAAAGABYAAAACAAMAAAAGABcAAAACAAMAAAAGABgAAAACAAMAAAAGABkAAAACAAIAAAAGABoAAAACAAAAAAAGABsAAAADAAIAAAAGABwAAAACAAIAAAAGAB0AAAADAAAAAAAHABQAAAACAAIAAAAHABUAAAADAAAAAAAHABYAAAADAAMAAAAHABcAAAACAAMAAAAHABgAAAADAAAAAAAHABkAAAADAAIAAAAHABoAAAACAAIAAAAHABsAAAACAAMAAAAHABwAAAACAAAAAAAHAB0AAAACAAAAAAAIABQAAAADAAIAAAAIABUAAAADAAAAAAAIABYAAAACAAMAAAAIABcAAAADAAIAAAAIABgAAAADAAAAAAAIABkAAAACAAIAAAAIABoAAAACAAAAAAAIABsAAAACAAAAAAAIABwAAAADAAMAAAAIAB0AAAACAAMAAAAJABQAAAADAAAAAAAJABUAAAACAAIAAAAJABYAAAADAAIAAAAJABcAAAACAAIAAAAJABgAAAADAAIAAAAJABkAAAADAAMAAAAJABoAAAACAAIAAAAJABsAAAACAAMAAAAJABwAAAACAAMAAAAJAB0AAAADAAAAAAAKABQAAAADAAIAAAAKABUAAAADAAIAAAAKABYAAAADAAAAAAAKABcAAAACAAAAAAAKABgAAAADAAIAAAAKABkAAAACAAMAAAAKABoAAAADAAIAAAAKABsAAAADAAIAAAAKABwAAAACAAAAAAAKAB0AAAACAAMAAAA=")
+tile_set = ExtResource("3_vbawf")
+metadata/_edit_lock_ = true
+
+[node name="TL" type="Marker2D" parent="Part2"]
+metadata/_edit_lock_ = true
+
+[node name="TR" type="Marker2D" parent="Part2"]
+position = Vector2(176, 0)
+metadata/_edit_lock_ = true
+
+[node name="BR" type="Marker2D" parent="Part2"]
+position = Vector2(176, 480)
+metadata/_edit_lock_ = true
+
+[node name="BL" type="Marker2D" parent="Part2"]
+position = Vector2(0, 480)
+metadata/_edit_lock_ = true
+
+[node name="Objects" type="Node2D" parent="Part2"]
+z_index = 1
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="TrailL" type="Line2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(-3, 0)
+width = 2.0
+metadata/_edit_lock_ = true
+
+[node name="TrailR" type="Line2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(3, 0)
+width = 2.0
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("1_5akj3")]
+position = Vector2(88, 72)
+
+[node name="Start" type="Marker2D" parent="."]
+position = Vector2(0, 424)
+
+[node name="End" type="Marker2D" parent="."]
+position = Vector2(0, -528)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(88, 144)
+enabled = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="ButtonStart" type="Button" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.784314)
+texture_filter = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -160.0
+offset_right = 88.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("4_5j60h")
+flat = true
+icon_alignment = 1
+script = ExtResource("5_xbp8w")
+
+[node name="ButtonMenu" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -34.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 34.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_uq6g6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uq6g6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uq6g6")
+icon = SubResource("CompressedTexture2D_13vki")
+icon_alignment = 1
+
+[node name="Menu" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -60.0
+offset_right = 80.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("8_e5ghm")
+
+[node name="Music" type="HSlider" parent="CanvasLayer/Menu"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 149.0
+offset_bottom = 56.0
+theme_override_constants/center_grabber = 1
+min_value = 1.0
+max_value = 10.0
+value = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Menu/Music"]
+texture_filter = 3
+position = Vector2(-16, 16)
+texture = ExtResource("8_n4nvb")
+
+[node name="Sounds" type="HSlider" parent="CanvasLayer/Menu"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 48.0
+offset_right = 149.0
+offset_bottom = 80.0
+theme_override_constants/center_grabber = 1
+min_value = 1.0
+max_value = 10.0
+value = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Menu/Sounds"]
+texture_filter = 3
+position = Vector2(-16, 16)
+texture = ExtResource("9_n1tnf")
+
+[node name="Time" type="Label" parent="CanvasLayer/Menu"]
+texture_filter = 2
+layout_mode = 1
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0.999246, 0.808428, 0.609459, 1)
+theme_override_font_sizes/font_size = 20
+text = "00:00:00"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Menu/Time"]
+texture_filter = 3
+position = Vector2(-10, 14)
+texture = ExtResource("6_x86dy")
+
+[node name="MovementType" type="Control" parent="CanvasLayer/Menu"]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 152.0
+offset_bottom = 112.0
+
+[node name="ButtonTilt" type="Button" parent="CanvasLayer/Menu/MovementType"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 64.0
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Menu/MovementType/ButtonTilt"]
+texture_filter = 3
+position = Vector2(32, 16)
+sprite_frames = SubResource("SpriteFrames_ptb6p")
+autoplay = "default"
+frame_progress = 0.101368
+
+[node name="ButtonButtons" type="Button" parent="CanvasLayer/Menu/MovementType"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Menu/MovementType/ButtonButtons"]
+texture_filter = 3
+position = Vector2(32, 16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_45aj3")
+autoplay = "default"
+frame_progress = 0.120891
+
+[node name="Button" type="Button" parent="CanvasLayer/Menu"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+focus_mode = 0
+icon = ExtResource("11_fk7ta")
+flat = true
+
+[node name="EndMenu" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -32.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("8_e5ghm")
+
+[node name="Control" type="Control" parent="CanvasLayer/EndMenu"]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 112.0
+
+[node name="Retry" type="Button" parent="CanvasLayer/EndMenu/Control"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -48.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+text = "
+"
+icon = ExtResource("4_tyewl")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("5_xbp8w")
+
+[node name="Control" type="Control" parent="CanvasLayer/EndMenu/Control"]
+anchors_preset = 0
+offset_right = 144.0
+offset_bottom = 56.0
+
+[node name="Score" type="Label" parent="CanvasLayer/EndMenu/Control/Control"]
+texture_filter = 2
+layout_mode = 1
+offset_left = 16.0
+offset_right = 104.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(1, 0.807843, 0.607843, 1)
+theme_override_font_sizes/font_size = 20
+text = "99999"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/EndMenu/Control/Control/Score"]
+texture_filter = 3
+position = Vector2(-10, 14)
+texture = ExtResource("4_dhqdj")
+
+[node name="HighScore" type="Label" parent="CanvasLayer/EndMenu/Control/Control"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.807843, 0.607843, 1)
+theme_override_font_sizes/font_size = 20
+text = "9"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/EndMenu/Control/Control/HighScore"]
+texture_filter = 3
+position = Vector2(-19, 14)
+texture = ExtResource("4_dhqdj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/EndMenu/Control/Control/HighScore/Sprite2D"]
+texture_filter = 3
+texture = ExtResource("5_q8bie")
+
+[node name="Time" type="Label" parent="CanvasLayer/EndMenu/Control/Control"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -23.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.807843, 0.607843, 1)
+theme_override_font_sizes/font_size = 20
+text = "00:00:00"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/EndMenu/Control/Control/Time"]
+texture_filter = 3
+position = Vector2(-10, 14)
+texture = ExtResource("6_x86dy")
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+texture_filter = 2
+offset_left = 40.0
+offset_right = 53.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Score"]
+modulate = Color(1, 1, 1, 0.784314)
+texture_filter = 3
+position = Vector2(-20, 14)
+texture = ExtResource("4_dhqdj")
+
+[node name="HighScore" type="Label" parent="CanvasLayer"]
+texture_filter = 2
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 104.0
+offset_bottom = 47.0
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "9999999"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HighScore"]
+modulate = Color(1, 1, 1, 0.784314)
+texture_filter = 3
+position = Vector2(-20, 14)
+texture = ExtResource("4_dhqdj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/HighScore/Sprite2D"]
+texture_filter = 3
+texture = ExtResource("5_q8bie")
+
+[node name="MovementButtons" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -64.0
+offset_right = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ButtonLeft" type="Button" parent="CanvasLayer/MovementButtons"]
+texture_filter = 3
+layout_mode = 1
+offset_right = 72.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "<"
+icon_alignment = 1
+expand_icon = true
+
+[node name="ButtonRight" type="Button" parent="CanvasLayer/MovementButtons"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_bottom = 48.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = ">"
+
+[node name="MovementType" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_top = 220.0
+offset_right = 161.0
+offset_bottom = 252.0
+
+[node name="ButtonTilt" type="Button" parent="CanvasLayer/MovementType"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 64.0
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/MovementType/ButtonTilt"]
+texture_filter = 3
+position = Vector2(32, 16)
+sprite_frames = SubResource("SpriteFrames_ptb6p")
+autoplay = "default"
+frame_progress = 0.101368
+
+[node name="ButtonButtons" type="Button" parent="CanvasLayer/MovementType"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/MovementType/ButtonButtons"]
+texture_filter = 3
+position = Vector2(32, 16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_45aj3")
+autoplay = "default"
+frame_progress = 0.120891
+
+[node name="Credits" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -122.0
+offset_right = 88.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("8_e5ghm")
+
+[node name="Control" type="Control" parent="CanvasLayer/Credits"]
+texture_filter = 2
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 26.0
+offset_right = 168.0
+offset_bottom = 258.0
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/Credits/Control"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 28.0
+theme_override_font_sizes/normal_font_size = 9
+text = "Game made by Cristea Darius, using Godot. Github (without assets)"
+
+[node name="Button" parent="CanvasLayer/Credits/Control/Label" instance=ExtResource("18_ms6oy")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+link = "https://github.com/CristeaDarius/Mobile-Infinite-Runner-Public"
+
+[node name="Music" type="Control" parent="CanvasLayer/Credits/Control"]
+anchors_preset = 0
+offset_top = 67.0
+offset_right = 160.0
+offset_bottom = 163.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Credits/Control/Music"]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 14
+text = "Music, via Pixabay:"
+
+[node name="Jingle Snow" type="RichTextLabel" parent="CanvasLayer/Credits/Control/Music"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 160.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 10
+text = "- Jingle Snow
+	by Tuneful-Tunes"
+
+[node name="Button" parent="CanvasLayer/Credits/Control/Music/Jingle Snow" instance=ExtResource("18_ms6oy")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_right = 0.0
+offset_bottom = 16.0
+grow_horizontal = 0
+link = "https://kenney-assets.itch.io/tiny-ski"
+
+[node name="Silly Pups in Snow" type="RichTextLabel" parent="CanvasLayer/Credits/Control/Music"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 160.0
+offset_bottom = 80.0
+theme_override_font_sizes/normal_font_size = 10
+text = "- Silly Pups in Snow by GoldenSoundLabs"
+
+[node name="Button" parent="CanvasLayer/Credits/Control/Music/Silly Pups in Snow" instance=ExtResource("18_ms6oy")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_right = 0.0
+offset_bottom = 16.0
+grow_horizontal = 0
+link = "https://pixabay.com/music/happy-childrens-tunes-silly-pups-in-snow-222528/"
+
+[node name="Snow" type="Label" parent="CanvasLayer/Credits/Control/Music"]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 10
+text = "- Snow by Villatic_Music"
+
+[node name="Button" parent="CanvasLayer/Credits/Control/Music/Snow" instance=ExtResource("18_ms6oy")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_right = 0.0
+offset_bottom = 16.0
+grow_horizontal = 0
+link = "https://pixabay.com/music/christmas-snow-268420/"
+
+[node name="Sounds" type="Control" parent="CanvasLayer/Credits/Control"]
+anchors_preset = 0
+offset_top = 164.5
+offset_right = 160.0
+offset_bottom = 229.5
+
+[node name="Sounds" type="Label" parent="CanvasLayer/Credits/Control/Sounds"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 127.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 14
+text = "Sounds, via Pixabay:"
+
+[node name="Hit Tree" type="Label" parent="CanvasLayer/Credits/Control/Sounds"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 10
+text = "- Hit Tree by u_xjrmmgxfru"
+
+[node name="Button" parent="CanvasLayer/Credits/Control/Sounds/Hit Tree" instance=ExtResource("18_ms6oy")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_right = 0.0
+offset_bottom = 16.0
+grow_horizontal = 0
+link = "https://pixabay.com/sound-effects/hit-tree-01-266310/"
+
+[node name="Menu Selection" type="RichTextLabel" parent="CanvasLayer/Credits/Control/Sounds"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 160.0
+offset_bottom = 68.0
+theme_override_font_sizes/normal_font_size = 10
+text = "- Menu Selection by morganpurkis (Freesound)"
+
+[node name="Button" parent="CanvasLayer/Credits/Control/Sounds/Menu Selection" instance=ExtResource("18_ms6oy")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_right = 0.0
+offset_bottom = 16.0
+grow_horizontal = 0
+link = "https://pixabay.com/sound-effects/menu-selection-102220/"
+
+[node name="Art" type="Control" parent="CanvasLayer/Credits/Control"]
+anchors_preset = 0
+offset_top = 31.0
+offset_right = 160.0
+offset_bottom = 67.0
+
+[node name="Art" type="Label" parent="CanvasLayer/Credits/Control/Art"]
+layout_mode = 1
+offset_right = 137.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 14
+text = "Art:"
+
+[node name="Tiny Ski" type="Label" parent="CanvasLayer/Credits/Control/Art"]
+layout_mode = 1
+offset_top = 16.0
+offset_right = 160.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 10
+text = "- Assets by Kenny"
+
+[node name="Button" parent="CanvasLayer/Credits/Control/Art/Tiny Ski" instance=ExtResource("18_ms6oy")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_right = 0.0
+offset_bottom = 16.0
+grow_horizontal = 0
+link = "https://kenney-assets.itch.io/tiny-ski"
+
+[node name="CloseCredits" type="Button" parent="CanvasLayer/Credits"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+focus_mode = 0
+icon = ExtResource("11_fk7ta")
+flat = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+bus = &"Music"
+
+[node name="SoundsPlayer" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+autoplay = true
+bus = &"Sounds"
+
+[connection signal="area_entered" from="PathMaker" to="PathMaker" method="_on_area_entered"]
+[connection signal="timeout" from="PathMaker/Timer" to="PathMaker" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu" to="." method="_on_button_menu_button_down"]
+[connection signal="value_changed" from="CanvasLayer/Menu/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Menu/Sounds" to="." method="_on_sounds_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Menu/MovementType/ButtonTilt" to="." method="_on_button_tilt_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/MovementType/ButtonButtons" to="." method="_on_button_buttons_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndMenu/Control/Retry" to="." method="_on_retry_pressed"]
+[connection signal="button_down" from="CanvasLayer/MovementButtons/ButtonLeft" to="Player" method="_on_button_left_button_down"]
+[connection signal="button_up" from="CanvasLayer/MovementButtons/ButtonLeft" to="Player" method="_on_button_left_button_up"]
+[connection signal="button_down" from="CanvasLayer/MovementButtons/ButtonRight" to="Player" method="_on_button_right_button_down"]
+[connection signal="button_up" from="CanvasLayer/MovementButtons/ButtonRight" to="Player" method="_on_button_right_button_up"]
+[connection signal="pressed" from="CanvasLayer/MovementType/ButtonTilt" to="." method="_on_button_tilt_pressed"]
+[connection signal="pressed" from="CanvasLayer/MovementType/ButtonButtons" to="." method="_on_button_buttons_pressed"]
+[connection signal="pressed" from="CanvasLayer/Credits/CloseCredits" to="." method="_on_close_credits_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

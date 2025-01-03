@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnc6pqoi7gckv"]
+
+[ext_resource type="Script" path="res://snowman.gd" id="1_sgxfc"]
+[ext_resource type="Texture2D" uid="uid://byoirx3oxkq1j" path="res://assets/Kenney/Tiles/tile_0069.png" id="2_226i6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrrbr"]
+size = Vector2(12, 3)
+
+[node name="Snowman" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_sgxfc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("2_226i6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_nrrbr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
